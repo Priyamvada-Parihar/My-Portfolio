@@ -1,0 +1,172 @@
+<div class="personal-info-container">
+    <div class="main-personal-info">
+        <div class="left-side">
+            <div class="left-side-header">
+                <div class="button-mac">
+                    <img src="/assets/images/close-icon.png" class="button-icon">
+                </div>
+                <div class="button-mac yellow-button">
+                    <img src="/assets/images/subtract-icon.png" class="button-icon">
+                </div>
+                <div class="button-mac green-button">
+                    <img src="/assets/images/full-screen-icon.png" class="button-icon" (click)="fulllscreen()">
+                </div>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item" *ngFor="let item of sideList">
+                    <div class="accordion-header" (click)="toggleAccordion(item)">
+                        <p class="title-beauty">{{ item.title }}</p>
+                    </div>
+                    <div class="accordion-content" [@accordionAnimation]="item.open ? 'open' : 'closed'">
+                        <ng-container *ngFor="let sub of item.content">
+                            <a class="subtitle-beauty" (click)="goTo(sub.link, item.link)">
+                                <img *ngIf="sub.icon" [src]="'assets/images/side-icon/' + sub.icon"
+                                    class="subitem-icons">
+                                <p class="subitem-title">{{ sub.title }}</p>
+                            </a>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="header-right-side">
+                <img src="/assets/images/Photo.jpg" alt="AmirAli Rashidi Profile" class="my-image">
+            </div>
+            <div class="right-side-main">
+                <div id="about" class="about-container">
+                    <div>
+                        <h1>Priyamvada Parihar</h1><br>
+                        <p class="about-text">
+                            Hey there! I'm Priyamvada, an IT engineering student passionate about technology and problem-solving.
+                            I enjoy building responsive, high quality digital solutions, exploring web development, and tackling challenges 
+                            in data science. With a keen interest in design and coding, I am here crafting digital experiences with passion and precision.<br><br>
+                            When I'm not coding, I'm exploring new ideas and staying curious. <br><br>
+                            I 🖤 Reading, Travelling, Music
+                        </p>
+                        <a target="_blank"
+                            href="https://drive.google.com/file/d/1IJh_qZRg9ivRD30vnDRP-yhcycxYFN26/view?usp=drivesdk">
+                            <button class="content-button">
+                                Download Resume
+                            </button>
+                        </a>
+                    </div>
+                    <img src="/assets/images/BITMOJI.png" class="about-image">
+                </div>
+                <div id="skills" class="box-container">
+                    <h4 class="box-headr">My Skills</h4>
+                    <div class="main-skills">
+                        <div class="skill-container" *ngFor="let item of skills">
+                            <div class="skill-detail">
+                                <img [src]="'/assets/images/skill-icons/' + item.icon" class="items-icon">
+                                <p class="item-name">{{ item.name }}</p>
+                            </div>
+                            <!-- <app-rating [rating]="item.rating"></app-rating> -->
+                        </div>
+                    </div>
+                </div>
+                <div id="jobs" class="box-container">
+                    <h4 class="box-headr">Experience</h4>
+                    <div class="main-jobs">
+                        <div class="job-container" *ngFor="let item of jobs" (click)="goTo(item.website, true)">
+                            <div class="job-detail">
+                                <div class="job-title">
+                                    <img [src]="'/assets/images/' + item.logo" class="items-logo">
+                                    <p class="item-name">{{ item.title }}</p>
+                                </div>
+                                <p>{{ item.date }}</p>
+                            </div>
+                            <p class="item-detail">{{ item.detail }}</p>
+                            <ng-container *ngIf="item.achievements">
+                                <li *ngFor="let a of item.achievements">{{ a }}</li>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+                <div id="projects" class="box-container">
+                    <h4 class="box-headr">My Projects</h4>
+                    <div class="main-projects">
+                        <div class="project-box" *ngFor="let item of projects">
+                            <div class="project-detail-container">
+                                <h3>{{ item.name }}</h3>
+                                <p>
+                                    {{ item.detail }}
+                                </p>
+                                <ng-container *ngIf="item.achievements">
+                                    <li *ngFor="let a of item.achievements">{{ a }}</li>
+                                </ng-container>
+                            </div>
+                            <a [href]="item.link" target="_blank" class="project-button" *ngIf="item.link"
+                                [ngClass]="{'project-with-link': item.link}">
+                                <button class="button-style">
+                                    Open
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="uni" class="box-container">
+                    <h4 class="box-headr">My Educations</h4>
+                    <div class="main-uni">
+
+                        <div class="uni-container">
+                            <div class="uni-detail">
+                                <div class="uni-title">
+                                    <img src="/assets/images/aissms-ioit.png" class="items-logo">
+                                    <div class="uni-items">
+                                        <p class="item-name">Bachelor of Engineering, Information Technology</p>
+                                        <p class="item-uni">AISSMS IOIT</p>
+                                    </div>
+                                </div>
+                                <p class="uni-date">2021 Dec – Present</p>
+                            </div>
+                        </div>
+
+                        <div class="uni-container">
+                            <div class="uni-detail">
+                                <div class="uni-title">
+                                    <img src="/assets/images/Kendriya-Vidyalaya.png" class="items-logo">
+                                    <div class="uni-items">
+                                        <p class="item-name">Higher Secondary - 12th</p>
+                                        <p class="item-uni">Kendriya Vidyalaya RHE Khadki</p>
+                                    </div>
+                                </div>
+                                <p class="uni-date">2020-21</p>
+                            </div>
+                        </div>
+
+                        <div class="uni-container">
+                            <div class="uni-detail">
+                                <div class="uni-title">
+                                    <img src="/assets/images/Kendriya-Vidyalaya.png" class="items-logo">
+                                    <div class="uni-items">
+                                        <p class="item-name">Secondary - 10th</p>
+                                        <p class="item-uni">Kendriya Vidyalaya RHE Khadki</p>
+                                    </div>
+                                </div>
+                                <p class="uni-date">2018-19</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="achi" class="box-container">
+                    <h4 class="box-headr">Achievements</h4>
+                    <div class="main-achi">
+                        <div class="achi-container">
+                            <div class="achi-detail">
+                                <ul class="achi-list">
+                                    <li class="achi-item">Published Research Paper on DeepFake Video Detection Using Deep Learning</li>
+                                    <li class="achi-item">Solved 200+ Leetcode problems</li>
+                                    <li class="achi-item">70 Leetcode problems in 5+ hours</li>
+                                    <li class="achi-item">Published Research Paper on Mental Health Chatbot </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
