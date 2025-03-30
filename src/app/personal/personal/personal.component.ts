@@ -269,7 +269,7 @@ export class PersonalComponent {
           'This is my personal CV website built using Angular and designed to resemble the macOS system. ',
           'It showcases my skills, work experience, and projects.',
         ],
-        link: '',
+        link: 'https://github.com/Priyamvada-Parihar/My-Portfolio',
     },
 
     {
